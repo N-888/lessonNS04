@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Помощник для работы с Git в проекте lessonNS04
+Утилита для работы с Git в проекте lessonNS04
 Этот скрипт помогает с основными операциями Git
 """
 
@@ -17,11 +17,11 @@ logger.add(sys.stderr, level="INFO", format="{message}")
 
 
 class GitHelper:
-    """Класс для помощи с Git операциями"""
+    """Класс для работы с Git операциями"""
     
     def __init__(self, project_root: str):
         """
-        Инициализация помощника Git
+        Инициализация утилиты Git
         
         Args:
             project_root: Корневая папка проекта
@@ -216,7 +216,7 @@ def main():
     # Определяем корневую папку проекта
     project_root = Path(__file__).parent.parent
     
-    # Создаем помощник Git
+    # Создаем утилиту Git
     helper = GitHelper(project_root)
     
     # Показываем меню
@@ -255,7 +255,7 @@ def main():
         elif choice == "7":
             helper.create_initial_commit()
         elif choice == "0":
-            logger.info("Выход из помощника Git")
+            logger.info("Выход из утилиты Git")
             break
         else:
             logger.warning("Неверный выбор. Попробуйте снова.")
