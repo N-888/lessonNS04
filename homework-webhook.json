@@ -1,71 +1,68 @@
 {
-  "name": "NS04 - Webhook → Telegram → Таблица",
+  "name": "NS04 - Webhook → Telegram → Airtable",
   "nodes": [
     {
       "parameters": {
-        "httpMethod": "GET",
         "path": "new-lead",
-        "responseMode": "onReceived",
-        "responseCode": 200
+        "options": {}
       },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [0, 0],
       "id": "webhook-node",
       "name": "Webhook",
-      "type": "n8n-nodes-base.webhook",
-      "typeVersion": 1,
-      "position": [250, 300]
+      "webhookId": "new-lead"
     },
     {
       "parameters": {
-        "chatId": "={{$env.TELEGRAM_CHAT_ID}}",
-        "text": "Новая заявка!\n\nИмя: {{ $json[\"query\"][\"name\"] }}\nEmail: {{ $json[\"query\"][\"email\"] }}\nТелефон: {{ $json[\"query\"][\"phone\"] }}",
-        "additionalFields": {
-          "parse_mode": "HTML"
-        }
+        "chatId": "289827877",
+        "text": "=Новая заявка!\nИмя: {{ $json.query.name }}\nEmail: {{ $json.query.email }}\nТелефон: {{ $json.query.phone }}",
+        "additionalFields": {}
       },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [250, 0],
       "id": "telegram-node",
       "name": "Telegram",
-      "type": "n8n-nodes-base.telegram",
-      "typeVersion": 1,
-      "position": [500, 300],
       "credentials": {
         "telegramApi": {
-          "id": "telegram-credential-id",
-          "name": "Telegram Bot"
+          "id": "wsMNv97crqkj1FJ1",
+          "name": "Telegram Bot - ДЗ"
         }
       }
     },
     {
       "parameters": {
-        "method": "POST",
-        "url": "=https://{{ $env.BPIUM_DOMAIN }}.bpium.ru/api/v1/catalogs/{{ $env.BPIUM_CATALOG_ID }}/records",
-        "authentication": "genericCredentialType",
-        "genericAuthType": "httpBasicAuth",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "Content-Type",
-              "value": "application/json"
-            }
-          ]
+        "operation": "create",
+        "base": {
+          "__rl": true,
+          "value": "app3UyvH41aKd9cz6",
+          "mode": "list"
         },
-        "sendBody": true,
-        "bodyParameters": {
-          "parameters": []
+        "table": {
+          "__rl": true,
+          "value": "tbl9o2YpzqMaIHOTU",
+          "mode": "list"
         },
-        "specifyBody": "json",
-        "jsonBody": "={{ JSON.stringify({\n  \"values\": {\n    \"2\": $json[\"query\"][\"name\"],\n    \"3\": $json[\"query\"][\"email\"],\n    \"4\": $json[\"query\"][\"phone\"]\n  }\n}) }}",
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "name": "={{ $json.query.name }}",
+            "email": "={{ $json.query.email }}",
+            "phone": "={{ $json.query.phone }}"
+          }
+        },
         "options": {}
       },
-      "id": "bpium-node",
-      "name": "Бипиум",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 3,
-      "position": [750, 300],
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [500, 0],
+      "id": "airtable-node",
+      "name": "Airtable",
       "credentials": {
-        "httpBasicAuth": {
-          "id": "bpium-credential-id",
-          "name": "Бипиум Auth"
+        "airtableTokenApi": {
+          "id": "REPLACE_WITH_YOUR_CREDENTIAL_ID",
+          "name": "Airtable - ДЗ"
         }
       }
     }
@@ -86,7 +83,7 @@
       "main": [
         [
           {
-            "node": "Бипиум",
+            "node": "Airtable",
             "type": "main",
             "index": 0
           }
@@ -94,18 +91,8 @@
       ]
     }
   },
-  "active": false,
-  "settings": {
-    "executionOrder": "v1"
-  },
-  "versionId": "1",
+  "pinData": {},
   "meta": {
-    "instanceId": "homework-ns04"
-  },
-  "tags": [
-    {
-      "name": "homework",
-      "id": "homework-tag-id"
-    }
-  ]
+    "templateCredsSetupCompleted": false
+  }
 }
