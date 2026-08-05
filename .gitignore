@@ -1,0 +1,52 @@
+# Виртуальное окружение Python
+venv/
+.venv/
+env/
+ENV/
+
+# Кэш Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+
+# Файлы зависимостей
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Локальные настройки
+.env
+.env.local
+*.env
+
+# Логи
+*.log
+n8n.log
+
+# Временные файлы
+*.tmp
+*.temp
+*.bak
+
+# Скриншоты (не коммитить личные скриншоты)
+Скриншоты/
+
+# Секреты и ключи
+*.key
+*.pem
+credentials.json
+token.json
+
+# Файлы операционной системы
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# N8N файлы (если есть локальные)
+*.n8n/
