@@ -104,16 +104,7 @@ lessonNS04/
 ├── 📄 README.md                 # Документация проекта
 ├── 📄 .gitignore               # Исключения Git
 ├── 📄 requirements.txt         # Зависимости Python
-├── 📄 workflow.json            # Workflow для n8n (Webhook → Telegram → Airtable)
-│
-├── 📂 docs/                    # 📚 Документация
-│   └── setup.md               # Инструкция по настройке
-│
-└── 📂 scripts/                 # 🔧 Утилиты
-    ├── test_webhook.py        # Тестирование webhook
-    ├── validate_config.py     # Проверка конфигурации
-    ├── generate_report.py     # Генерация отчётов
-    └── git_helper.py          # Утилита Git
+└── 📄 workflow.json            # Workflow для n8n (Webhook → Telegram → Airtable)
 ```
 
 ---
