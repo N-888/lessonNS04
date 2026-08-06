@@ -75,13 +75,7 @@
             "node": "Telegram",
             "type": "main",
             "index": 0
-          }
-        ]
-      ]
-    },
-    "Telegram": {
-      "main": [
-        [
+          },
           {
             "node": "Airtable",
             "type": "main",
