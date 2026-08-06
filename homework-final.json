@@ -1,0 +1,92 @@
+{
+  "name": "NS04 - Webhook → Telegram + Airtable",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "GET",
+        "path": "new-lead",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [250, 300],
+      "id": "webhook-1",
+      "name": "Webhook"
+    },
+    {
+      "parameters": {
+        "chatId": "289827877",
+        "text": "=Новая заявка!\nИмя: {{ $json.query.name }}\nEmail: {{ $json.query.email }}\nТелефон: {{ $json.query.phone }}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [500, 200],
+      "id": "telegram-1",
+      "name": "Telegram",
+      "credentials": {
+        "telegramApi": {
+          "id": "wsMNv97crqkj1FJ1",
+          "name": "Telegram Bot - ДЗ"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "base": {
+          "__rl": true,
+          "value": "app3UyvH41aKd9cz6",
+          "mode": "list"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tbl9o2YpzqMaIHOTU",
+          "mode": "list"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Name": "={{ $json.query.name }}",
+            "Email": "={{ $json.query.email }}",
+            "Phone": "={{ $json.query.phone }}"
+          }
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [500, 400],
+      "id": "airtable-1",
+      "name": "Airtable",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "REPLACE_ME",
+          "name": "Airtable - ДЗ"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Telegram",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Airtable",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "meta": {
+    "templateCredsSetupCompleted": false
+  }
+}
