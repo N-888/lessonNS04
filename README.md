@@ -50,18 +50,13 @@
 │   📥 ВХОД              ⚙️ ОБРАБОТКА           📤 ВЫХОД                     │
 │                                                                             │
 │   ┌─────────┐         ┌─────────┐           ┌─────────┐                     │
-│   │ Webhook │────────▶│   n8n   │──────────▶│Telegram │                     │
-│   │ (API)   │         │Workflow │           │  Бот    │                     │
-│   └─────────┘         └─────────┘           └─────────┘                     │
-│        │                    │                     │                         │
-│        │                    │                     │                         │
-│        ▼                    ▼                     ▼                         │
-│   ┌─────────┐         ┌─────────┐           ┌─────────┐                     │
-│   │  JSON   │         │ Логика  │           │Airtable │                     │
-│   │ Данные  │         │  Узлы   │           │ Бипиум  │                     │
+│   │ Webhook │────────▶│Telegram │──────────▶│Airtable │                     │
+│   │ (API)   │         │  Бот    │           │  БД     │                     │
 │   └─────────┘         └─────────┘           └─────────┘                     │
 │                                                                             │
 └─────────────────────────────────────────────────────────────────────────────┘
+
+Webhook → Telegram → Airtable (последовательная цепочка)
 ```
 
 ---
@@ -93,7 +88,7 @@ pip install -r requirements.txt
 #### Шаг 3: Импортируйте в n8n
 1. Откройте n8n → `http://localhost:5678`
 2. Menu (☰) → **Import from File**
-3. Выберите `homework-webhook.json`
+3. Выберите `homework-final.json`
 
 ---
 
@@ -105,7 +100,7 @@ lessonNS04/
 ├── 📄 README.md                 # Документация проекта
 ├── 📄 .gitignore               # Исключения Git
 ├── 📄 requirements.txt         # Зависимости Python
-├── 📄 homework-webhook.json    # Workflow для n8n
+├── 📄 homework-final.json       # Workflow для n8n (Webhook → Telegram → Airtable)
 │
 ├── 📂 docs/                    # 📚 Документация
 │   └── setup.md               # Инструкция по настройке

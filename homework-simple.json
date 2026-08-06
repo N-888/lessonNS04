@@ -1,0 +1,52 @@
+{
+  "name": "NS04 - Final",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "GET",
+        "path": "new-lead",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [250, 300],
+      "id": "webhook-1",
+      "name": "Webhook"
+    },
+    {
+      "parameters": {
+        "chatId": "289827877",
+        "text": "=Новая заявка!\nИмя: {{ $json.query.name }}\nEmail: {{ $json.query.email }}\nТелефон: {{ $json.query.phone }}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [500, 300],
+      "id": "telegram-1",
+      "name": "Telegram",
+      "credentials": {
+        "telegramApi": {
+          "id": "wsMNv97crqkj1FJ1",
+          "name": "Telegram Bot - ДЗ"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Telegram",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "meta": {
+    "templateCredsSetupCompleted": true
+  }
+}
