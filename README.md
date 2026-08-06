@@ -92,7 +92,7 @@ pip install -r requirements.txt
 #### Шаг 3: Импортируйте в n8n
 1. Откройте n8n → `http://localhost:5678`
 2. Menu (☰) → **Import from File**
-3. Выберите `homework-final.json`
+3. Выберите `workflow.json`
 
 ---
 
@@ -104,7 +104,7 @@ lessonNS04/
 ├── 📄 README.md                 # Документация проекта
 ├── 📄 .gitignore               # Исключения Git
 ├── 📄 requirements.txt         # Зависимости Python
-├── 📄 homework-final.json       # Workflow для n8n (Webhook → Telegram → Airtable)
+├── 📄 workflow.json            # Workflow для n8n (Webhook → Telegram → Airtable)
 │
 ├── 📂 docs/                    # 📚 Документация
 │   └── setup.md               # Инструкция по настройке
