@@ -83,6 +83,17 @@
           }
         ]
       ]
+    },
+    "Telegram": {
+      "main": [
+        [
+          {
+            "node": "Airtable",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "pinData": {},
